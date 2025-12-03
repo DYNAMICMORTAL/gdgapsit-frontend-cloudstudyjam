@@ -120,19 +120,13 @@ def main():
         "participants": []
     }
     
-    MAX_BADGES = 19
     for r in results:
-        badges = r.get("badges", [])
-        # Cap badges at 19
-        if len(badges) > MAX_BADGES:
-            badges = badges[:MAX_BADGES]
-        
         json_data["participants"].append({
             "name": r.get("name"),
             "email": r.get("email"),
             "profile_url": r.get("profile_url"),
-            "total_badges": len(badges),
-            "badges": badges,
+            "total_badges": len(r.get("badges", [])),
+            "badges": r.get("badges", []),
             "error": r.get("error")
         })
     
