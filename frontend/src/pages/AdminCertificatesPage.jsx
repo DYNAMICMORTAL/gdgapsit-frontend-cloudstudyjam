@@ -4,6 +4,7 @@ import QRCode from 'qrcode';
 import { supabase } from '../lib/supabase';
 import CertificatePreview from '../components/CertificatePreview';
 import { generateCertificatePdf } from '../services/certificateGenerator';
+
 import {
 	AlertCircle,
 	Award,
