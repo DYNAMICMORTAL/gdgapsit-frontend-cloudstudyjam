@@ -1,438 +1,251 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { 
-  Trophy, Medal, Award, Search, RefreshCw, ChevronUp, ChevronDown, 
-  TrendingUp, Calendar, Users, Target, ExternalLink, Filter, X
-} from 'lucide-react';
+import { Trophy, Search, RefreshCw, Calendar, Users, X } from 'lucide-react';
 import { format } from 'date-fns';
 
 export default function LeaderboardPage() {
-  const [participants, setParticipants] = useState([]);
-  const [filteredParticipants, setFilteredParticipants] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortField, setSortField] = useState('rank');
-  const [sortDirection, setSortDirection] = useState('asc');
-  const [filterMinBadges, setFilterMinBadges] = useState(0);
-  const [showFilters, setShowFilters] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState(null);
+	const [participants, setParticipants] = useState([]);
+	const [filteredParticipants, setFilteredParticipants] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [searchTerm, setSearchTerm] = useState('');
+	const [lastUpdated, setLastUpdated] = useState(null);
+	const [useTempTable] = useState(true);
 
-  const fetchLeaderboard = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('participants')
-        .select('*')
-        .order('rank', { ascending: true });
+	const fetchLeaderboard = async () => {
+		try {
+			setLoading(true);
+			const tableName = useTempTable ? 'temp_participants' : 'participants';
+			const { data, error } = await supabase
+				.from(tableName)
+				.select('*')
+				.order('rank', { ascending: true });
 
-      if (error) throw error;
-      setParticipants(data || []);
-      setFilteredParticipants(data || []);
-      setLastUpdated(new Date());
-    } catch (error) {
-      console.error('Error fetching leaderboard:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+			if (error) throw error;
+			setParticipants(data || []);
+			setFilteredParticipants(data || []);
+			setLastUpdated(new Date());
+		} catch (err) {
+			console.error('Error fetching leaderboard:', err);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  useEffect(() => {
-    fetchLeaderboard();
-  }, []);
+	useEffect(() => {
+		fetchLeaderboard();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [useTempTable]);
 
-  // Search and filter logic
-  useEffect(() => {
-    let filtered = [...participants];
+	useEffect(() => {
+		let filtered = [...participants];
 
-    // Search filter
-    if (searchTerm) {
-      filtered = filtered.filter(p => 
-        p.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.email?.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+		if (searchTerm) {
+			const term = searchTerm.toLowerCase();
+			filtered = filtered.filter(
+				(p) =>
+					p.full_name?.toLowerCase().includes(term) ||
+					p.email?.toLowerCase().includes(term)
+			);
+		}
 
-    // Badge filter
-    if (filterMinBadges > 0) {
-      filtered = filtered.filter(p => (p.total_badges || 0) >= filterMinBadges);
-    }
+		filtered.sort((a, b) => {
+			const rankA = a?.rank ?? Number.MAX_SAFE_INTEGER;
+			const rankB = b?.rank ?? Number.MAX_SAFE_INTEGER;
+			return rankA - rankB;
+		});
 
-    // Sorting
-    filtered.sort((a, b) => {
-      let aVal = a[sortField];
-      let bVal = b[sortField];
-      
-      if (sortField === 'full_name' || sortField === 'email') {
-        aVal = (aVal || '').toLowerCase();
-        bVal = (bVal || '').toLowerCase();
-      }
-      
-      if (sortDirection === 'asc') {
-        return aVal > bVal ? 1 : -1;
-      } else {
-        return aVal < bVal ? 1 : -1;
-      }
-    });
+		setFilteredParticipants(filtered);
+	}, [participants, searchTerm]);
 
-    setFilteredParticipants(filtered);
-  }, [searchTerm, filterMinBadges, sortField, sortDirection, participants]);
+	const getMedal = (rank) => {
+		if (rank === 1) return { emoji: '🥇', accent: 'from-yellow-400 to-amber-500' };
+		if (rank === 2) return { emoji: '🥈', accent: 'from-gray-200 to-gray-400' };
+		if (rank === 3) return { emoji: '🥉', accent: 'from-orange-300 to-amber-500' };
+		return { emoji: null, accent: '' };
+	};
 
-  const handleSort = (field) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortField(field);
-      setSortDirection('asc');
-    }
-  };
+	// const focusLabels = ['Cloud Engineer track', 'Data & AI track', 'Security track', 'App Modernization track'];
+	const avatarGradients = [
+		'from-blue-500 to-blue-600',
+		'from-red-500 to-orange-500',
+		'from-green-500 to-emerald-500',
+		'from-purple-500 to-indigo-500'
+	];
 
-  const getRankBadge = (rank) => {
-    if (rank === 1) return { icon: Trophy, color: 'text-amber-500', bg: 'bg-amber-50', border: 'border-amber-200' };
-    if (rank === 2) return { icon: Medal, color: 'text-slate-400', bg: 'bg-slate-50', border: 'border-slate-200' };
-    if (rank === 3) return { icon: Award, color: 'text-orange-500', bg: 'bg-orange-50', border: 'border-orange-200' };
-    return { icon: null, color: 'text-gray-600', bg: 'bg-white', border: 'border-gray-200' };
-  };
+	const showPodium = !searchTerm && filteredParticipants.length >= 3;
 
-  const getBadgeLevel = (count) => {
-    if (count >= 15) return { label: 'Expert', color: 'bg-purple-100 text-purple-700 border-purple-300' };
-    if (count >= 10) return { label: 'Advanced', color: 'bg-blue-100 text-blue-700 border-blue-300' };
-    if (count >= 5) return { label: 'Intermediate', color: 'bg-green-100 text-green-700 border-green-300' };
-    if (count >= 1) return { label: 'Beginner', color: 'bg-yellow-100 text-yellow-700 border-yellow-300' };
-    return { label: 'New', color: 'bg-gray-100 text-gray-600 border-gray-300' };
-  };
+	if (loading) {
+		return (
+			<div className="min-h-screen bg-gray-50 flex items-center justify-center">
+				<div className="text-center">
+					<RefreshCw className="w-12 h-12 text-blue-500 mx-auto mb-4 animate-spin" />
+					<p className="text-lg text-gray-600">Loading leaderboard...</p>
+				</div>
+			</div>
+		);
+	}
 
-  const stats = {
-    total: participants.length,
-    totalBadges: participants.reduce((sum, p) => sum + (p.total_badges || 0), 0),
-    active: participants.filter(p => (p.total_badges || 0) > 0).length,
-    avgBadges: participants.length > 0 
-      ? (participants.reduce((sum, p) => sum + (p.total_badges || 0), 0) / participants.length).toFixed(1)
-      : 0
-  };
+	return (
+		<div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50">
+			<div className="max-w-6xl mx-auto px-4 py-10 space-y-8">
+				<header className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8">
+					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+						<div>
+							<p className="text-xs font-semibold uppercase tracking-widest text-gray-500">Google Cloud Study Jam</p>
+							<h1 className="text-4xl font-bold text-gray-900 flex items-center gap-3 mt-2">
+								<span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-100 text-blue-600">
+									<Trophy className="w-6 h-6" />
+								</span>
+								Leaderboard
+							</h1>
+							<p className="text-gray-600 mt-2">Celebrating {participants.length} active learners</p>
+						</div>
+						<div className="flex flex-col gap-3 sm:items-end">
+							{lastUpdated && (
+								<div className="text-sm text-gray-600 flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+									<Calendar className="w-4 h-4 text-blue-600" />
+									Updated {format(lastUpdated, 'MMM dd, HH:mm')}
+								</div>
+							)}
+							<button
+								onClick={fetchLeaderboard}
+								className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium shadow-md hover:bg-blue-700 transition-colors"
+							>
+								<RefreshCw className="w-4 h-4" />
+								Refresh data
+							</button>
+						</div>
+					</div>
+				</header>
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <RefreshCw className="w-12 h-12 text-blue-500 mx-auto mb-4 animate-spin" />
-          <p className="text-lg text-gray-600">Loading leaderboard...</p>
-        </div>
-      </div>
-    );
-  }
+				<section className="bg-white/90 backdrop-blur rounded-2xl border border-gray-100 shadow-sm p-6">
+					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+						<div>
+							<p className="text-sm uppercase tracking-wide text-gray-500 font-semibold">Explore the cohort</p>
+							<p className="text-xl font-bold text-gray-900">
+								Showing {filteredParticipants.length} learners
+								{participants.length !== filteredParticipants.length && (
+									<span className="text-sm font-medium text-gray-500 ml-2">
+										(filtered from {participants.length})
+									</span>
+								)}
+							</p>
+						</div>
+						<div className="relative w-full sm:w-80">
+							<Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-600" />
+							<input
+								type="text"
+								placeholder="Search by name or email"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
+								className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+							/>
+							{searchTerm && (
+								<button
+									onClick={() => setSearchTerm('')}
+									className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors"
+								>
+									<X className="w-5 h-5" />
+								</button>
+							)}
+						</div>
+					</div>
+				</section>
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                <Trophy className="w-8 h-8 text-blue-600" />
-                Leaderboard
-              </h1>
-              <p className="text-gray-600 mt-1">Cloud Study Jam 2025 Rankings</p>
-            </div>
-            <div className="flex items-center gap-3">
-              {lastUpdated && (
-                <div className="text-sm text-gray-500 flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  {format(lastUpdated, 'MMM dd, HH:mm')}
-                </div>
-              )}
-              <button
-                onClick={fetchLeaderboard}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Refresh
-              </button>
-            </div>
-          </div>
+				{showPodium && (
+					<section>
+						<p className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">Podium spotlight</p>
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+							{[1, 0, 2].map((positionIndex, cardIndex) => {
+								const participant = filteredParticipants[positionIndex];
+								if (!participant) return null;
+								const medal = getMedal(participant.rank);
+								const isCenter = cardIndex === 1;
 
-          {/* Stats Cards */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600 font-medium">Total Participants</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
-                </div>
-                <Users className="w-10 h-10 text-blue-500 opacity-80" />
-              </div>
-            </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600 font-medium">Total Badges</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalBadges}</p>
-                </div>
-                <Award className="w-10 h-10 text-green-500 opacity-80" />
-              </div>
-            </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600 font-medium">Active Learners</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{stats.active}</p>
-                </div>
-                <TrendingUp className="w-10 h-10 text-purple-500 opacity-80" />
-              </div>
-            </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600 font-medium">Avg. Badges</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{stats.avgBadges}</p>
-                </div>
-                <Target className="w-10 h-10 text-orange-500 opacity-80" />
-              </div>
-            </div>
-          </div> */}
-        </div>
+								return (
+									<div
+										key={participant.id}
+										className={`bg-white rounded-2xl border border-gray-100 shadow-lg p-6 text-center transition-transform duration-300 ${
+											isCenter ? 'md:-mt-6 ring-2 ring-yellow-100' : ''
+										}`}
+									>
+										<div
+											className={`inline-flex items-center justify-center ${isCenter ? 'w-24 h-24' : 'w-20 h-20'} rounded-full bg-gradient-to-br ${medal.accent} border-4 border-white shadow-xl mx-auto mb-4`}
+										>
+											<span className={isCenter ? 'text-5xl' : 'text-4xl'}>{medal.emoji}</span>
+										</div>
+										<h3 className={`${isCenter ? 'text-2xl' : 'text-xl'} text-gray-900 mb-1 truncate`}>
+											{participant.full_name}
+										</h3>
+										<p className="text-sm text-gray-600 truncate">{participant.email}</p>
+										<div className="mt-4">
+											<span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-50 border border-gray-200 text-sm font-medium text-gray-700">
+												<span className="inline-block w-2 h-2 rounded-full bg-blue-500"></span>
+												{/* {focusLabels[positionIndex % focusLabels.length]} */}
+											</span>
+										</div>
+									</div>
+								);
+							})}
+						</div>
+					</section>
+				)}
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
-          <div className="flex flex-col sm:flex-row gap-4">
-            {/* Search */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search by name or email..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              )}
-            </div>
+				<section className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8">
+					<div className="flex items-center justify-between flex-wrap gap-4">
+						<div>
+							<p className="text-xs uppercase tracking-[0.3em] text-gray-500 font-semibold">Participant roster</p>
+							<h2 className="text-2xl font-bold text-gray-900 mt-2">All learners</h2>
+						</div>
+						<span className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-full">
+							<Users className="w-4 h-4 text-blue-600" />
+							{filteredParticipants.length} total
+						</span>
+					</div>
 
-            {/* Filter Toggle */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg border font-medium transition-colors ${
-                showFilters || filterMinBadges > 0
-                  ? 'bg-blue-50 border-blue-300 text-blue-700'
-                  : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              <Filter className="w-5 h-5" />
-              Filters
-              {filterMinBadges > 0 && (
-                <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">1</span>
-              )}
-            </button>
-          </div>
+					<div className="mt-6 space-y-4">
+						{filteredParticipants.length === 0 && (
+							<div className="text-center py-10 text-gray-500 border border-dashed border-gray-200 rounded-2xl">
+								No participants match your search yet.
+							</div>
+						)}
 
-          {/* Filter Options */}
-          {showFilters && (
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <div className="flex items-center gap-4">
-                <label className="text-sm font-medium text-gray-700">Min. Badges:</label>
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  value={filterMinBadges}
-                  onChange={(e) => setFilterMinBadges(Number(e.target.value))}
-                  className="flex-1 max-w-xs"
-                />
-                <span className="text-sm font-medium text-gray-900 min-w-[3rem]">{filterMinBadges}+</span>
-                {filterMinBadges > 0 && (
-                  <button
-                    onClick={() => setFilterMinBadges(0)}
-                    className="text-sm text-blue-600 hover:text-blue-700 font-medium"
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
+						{filteredParticipants.map((participant, index) => {
+							const isTopThree = participant.rank <= 3;
+							const medal = getMedal(participant.rank);
+							const avatarColor = avatarGradients[index % avatarGradients.length];
+							// const focusLabel = focusLabels[index % focusLabels.length];
 
-          {/* Active Filters Display */}
-          {(searchTerm || filterMinBadges > 0) && (
-            <div className="mt-3 pt-3 border-t border-gray-200 text-sm text-gray-600">
-              Showing {filteredParticipants.length} of {participants.length} participants
-            </div>
-          )}
-        </div>
-
-        {/* Top 3 Highlight */}
-        {participants.length >= 3 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {participants.slice(0, 3).map((participant, idx) => {
-              const rankBadge = getRankBadge(participant.rank);
-              const RankIcon = rankBadge.icon;
-              // const badgeLevel = getBadgeLevel(participant.total_badges || 0);
-
-              return (
-                <div
-                  key={participant.id}
-                  className={`bg-white rounded-xl border-2 p-6 ${rankBadge.border} hover:shadow-lg transition-shadow`}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`flex items-center justify-center w-12 h-12 rounded-lg ${rankBadge.bg} ${rankBadge.border} border`}>
-                      <RankIcon className={`w-7 h-7 ${rankBadge.color}`} />
-                    </div>
-                    {/* <div className={`px-3 py-1 rounded-full border text-xs font-semibold ${badgeLevel.color}`}>
-                      {badgeLevel.label}
-                    </div> */}
-                  </div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-1 truncate">{participant.full_name}</h3>
-                  <p className="text-sm text-gray-600 mb-4 truncate">{participant.email}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-3xl font-bold text-gray-900">{participant.total_badges || 0}</p>
-                      <p className="text-xs text-gray-600">Badges Earned</p>
-                    </div>
-                    <a
-                      href={participant.profile_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                      title="View Profile"
-                    >
-                      <ExternalLink className="w-5 h-5 text-gray-600" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Leaderboard Table */}
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-3 text-left">
-                    <button
-                      onClick={() => handleSort('rank')}
-                      className="flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-gray-900"
-                    >
-                      Rank
-                      {sortField === 'rank' && (
-                        sortDirection === 'asc' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                      )}
-                    </button>
-                  </th>
-                  <th className="px-6 py-3 text-left">
-                    <button
-                      onClick={() => handleSort('full_name')}
-                      className="flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-gray-900"
-                    >
-                      Participant
-                      {sortField === 'full_name' && (
-                        sortDirection === 'asc' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                      )}
-                    </button>
-                  </th>
-                  <th className="px-6 py-3 text-center">
-                    <button
-                      onClick={() => handleSort('total_badges')}
-                      className="flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-gray-900 mx-auto"
-                    >
-                      Badges
-                      {sortField === 'total_badges' && (
-                        sortDirection === 'asc' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                      )}
-                    </button>
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Level
-                  </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Profile
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {filteredParticipants.map((participant) => {
-                  const rankBadge = getRankBadge(participant.rank);
-                  const RankIcon = rankBadge.icon;
-                  const badgeLevel = getBadgeLevel(participant.total_badges || 0);
-                  const maxBadges = Math.max(...participants.map(p => p.total_badges || 0));
-                  const progress = maxBadges > 0 ? ((participant.total_badges || 0) / maxBadges) * 100 : 0;
-
-                  return (
-                    <tr key={participant.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center gap-3">
-                          {RankIcon ? (
-                            <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${rankBadge.bg} ${rankBadge.border} border`}>
-                              <RankIcon className={`w-5 h-5 ${rankBadge.color}`} />
-                            </div>
-                          ) : (
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 border border-gray-200">
-                              <span className="text-sm font-bold text-gray-700">#{participant.rank}</span>
-                            </div>
-                          )}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div>
-                          <div className="font-semibold text-gray-900">{participant.full_name}</div>
-                          <div className="text-sm text-gray-600">{participant.email}</div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 rounded-lg">
-                          <Award className="w-4 h-4 text-blue-600" />
-                          <span className="font-bold text-gray-900">{participant.total_badges || 0}</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div>
-                          <span className={`inline-block px-3 py-1 rounded-full border text-xs font-semibold ${badgeLevel.color}`}>
-                            {badgeLevel.label}
-                          </span>
-                          <div className="mt-2 w-32 bg-gray-200 rounded-full h-1.5">
-                            <div
-                              className="bg-blue-600 h-1.5 rounded-full transition-all duration-500"
-                              style={{ width: `${progress}%` }}
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <a
-                          href={participant.profile_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-medium"
-                        >
-                          View
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Empty State */}
-          {filteredParticipants.length === 0 && (
-            <div className="text-center py-12">
-              <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No results found</h3>
-              <p className="text-gray-600">Try adjusting your search or filters</p>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+							return (
+								<div
+									key={participant.id}
+									className={`flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-2xl border border-gray-100 p-4 sm:p-5 shadow-[0_1px_8px_rgba(15,23,42,0.05)] bg-white transition-colors ${
+										isTopThree ? 'bg-gradient-to-r from-blue-50 via-white to-green-50' : ''
+									}`}
+								>
+									<div className="flex items-center gap-4">
+										{isTopThree && (
+											<div className="text-3xl" aria-label={`Rank ${participant.rank}`}>
+												{medal.emoji}
+											</div>
+										)}
+										<div
+											className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${avatarColor} text-white font-bold text-xl flex items-center justify-center shadow-lg`}
+										>
+											{participant.full_name?.charAt(0)?.toUpperCase() || '?'}
+										</div>
+										<div>
+											<p className="text-lg font-semibold text-gray-900 leading-tight">{participant.full_name}</p>
+											<p className="text-sm text-gray-600">{participant.email}</p>
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</section>
+			</div>
+		</div>
+	);
 }
+

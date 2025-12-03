@@ -1,0 +1,6 @@
+export interface Participant {
+  // ...existing properties...
+  badge_count: number;
+  arcade_completed: boolean;
+  // ...existing properties...
+}

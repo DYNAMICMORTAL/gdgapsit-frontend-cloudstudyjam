@@ -12,6 +12,8 @@ export default function Layout({ children }) {
     { name: 'Home', path: '/', icon: Home },
     { name: 'Leaderboard', path: '/leaderboard', icon: Trophy },
     { name: 'Announcements', path: '/announcements', icon: Bell },
+    { name: 'Students', path: '/admin/students', icon: Users },
+    { name: 'Certificates', path: '/admin/certificates', icon: Award }
   ];
 
   return (
@@ -152,6 +154,16 @@ export default function Layout({ children }) {
                 <li>
                   <Link to="/announcements" className="text-gray-400 hover:text-white transition-colors">
                     Announcements
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/admin/students" className="text-gray-400 hover:text-white transition-colors">
+                    Admin · Students
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/admin/certificates" className="text-gray-400 hover:text-white transition-colors">
+                    Admin · Certificates
                   </Link>
                 </li>
               </ul>
