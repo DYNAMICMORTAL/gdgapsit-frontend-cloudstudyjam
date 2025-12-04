@@ -120,6 +120,8 @@ export default function AdminCertificatesPage() {
 
 		const backendUrl = import.meta.env.VITE_BACKEND_URL || '';
 		const adminKey = import.meta.env.VITE_ADMIN_API_KEY || 'apsit-admin-2025';
+		// Use relative URL when backendUrl is empty (same domain deployment)
+		const apiBaseUrl = backendUrl || '';
 
 		for (const student of selectedStudents) {
 			const certId = `${certPrefix}-${generateSuffix(student.id)}`;
@@ -162,7 +164,7 @@ export default function AdminCertificatesPage() {
 			formData.append('event', eventName);
 			formData.append('issuedAt', new Date(issueDate).toISOString());
 
-			const response = await fetch(`${backendUrl}/uploadCertificate`, {
+			const response = await fetch(`${apiBaseUrl}/api/uploadCertificate`, {
 				method: 'POST',
 				headers: {
 					'X-ADMIN-KEY': adminKey
