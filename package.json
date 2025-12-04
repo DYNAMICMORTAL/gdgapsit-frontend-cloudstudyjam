@@ -1,0 +1,22 @@
+{
+  "name": "gdgapsit-announcements-setup",
+  "version": "1.0.0",
+  "description": "Setup script for GDG APSIT Study Jam announcements system",
+  "type": "module",
+  "scripts": {
+    "setup": "node setup.js",
+    "deploy": "npm run deploy:function && npm run deploy:frontend",
+    "deploy:function": "supabase functions deploy send-announcement-emails --no-verify-jwt",
+    "deploy:frontend": "cd frontend && npm run build",
+    "test:email": "node test-email.js"
+  },
+  "keywords": ["gdg", "study-jam", "announcements", "email"],
+  "author": "GDG APSIT",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "formidable": "^3.5.0",
+    "googleapis": "^129.0.0",
+    "nanoid": "^5.0.7"
+  }
+}

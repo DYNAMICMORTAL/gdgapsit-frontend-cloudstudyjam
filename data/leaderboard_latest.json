@@ -1,0 +1,891 @@
+{
+  "scraped_at": "2025-11-28T02:11:08.442260+00:00",
+  "total_participants": 79,
+  "participants": [
+    {
+      "name": "Aabha Umesh Bopalkar",
+      "email": "aabhabopalkar7.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-41",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Aarya Sandesh Wesavkar",
+      "email": "aaryawesavkar02.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-19",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Akshara",
+      "email": "aksharapansare.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-29",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Arshvi Thanekar",
+      "email": "arshvi.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-62",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Arya Mangesh Hegiste",
+      "email": "hegistearya.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/468d47f4-5ac5-470e-b871-a4622b200c5e",
+      "total_badges": 19,
+      "arcade_count": 2,
+      "badges": [
+        {
+          "badge_name": "Level 3: Generative AI",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Ashmit Kumar Santra",
+      "email": "ashmitkagcpcloudjam2025.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/335b1d81-439a-4ba5-8005-078ffe04559a",
+      "total_badges": 19,
+      "arcade_count": 2,
+      "badges": [
+        {
+          "badge_name": "Get Started with Google Workspace Tools",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Dataplex",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Looker",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with API Gateway",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Pub/Sub",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Cloud Storage",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        },
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        },
+        {
+          "badge_name": "Level 3: Generative AI",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        },
+        {
+          "badge_name": "Level 2: Cloud Operations and Application Management",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        },
+        {
+          "badge_name": "Level 1: Scalable Systems",
+          "earned_date": "2025-10-22 00:00:00-04:00",
+          "earned_date_raw": "Oct 22, 2025 EDT"
+        },
+        {
+          "badge_name": "Skills Boost Arcade Trivia October 2025 Week 4",
+          "earned_date": "2025-10-21 00:00:00-04:00",
+          "earned_date_raw": "Oct 21, 2025 EDT"
+        },
+        {
+          "badge_name": "Skills Boost Arcade Trivia October 2025 Week 3",
+          "earned_date": "2025-10-21 00:00:00-04:00",
+          "earned_date_raw": "Oct 21, 2025 EDT"
+        },
+        {
+          "badge_name": "Skills Boost Arcade Trivia October 2025 Week 2",
+          "earned_date": "2025-10-21 00:00:00-04:00",
+          "earned_date_raw": "Oct 21, 2025 EDT"
+        },
+        {
+          "badge_name": "Skills Boost Arcade Trivia October 2025 Week 1",
+          "earned_date": "2025-10-20 00:00:00-04:00",
+          "earned_date_raw": "Oct 20, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Atharva Gourshete",
+      "email": "atharvagourshete.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/64d1273f-91fe-444f-a7ca-e592bdef4557",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-21 00:00:00-04:00",
+          "earned_date_raw": "Oct 21, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Avanish Ravindra Kasar",
+      "email": "avanishkasar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-0",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Bharatkumar Mularam Gungoman",
+      "email": "bharatkumar1.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-38",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Bhathi Vivek Dhanji",
+      "email": "vivekbhathi18.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-51",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Bhavesh Tushar Baviskar",
+      "email": "bhaveshbaviskar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-1",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Daksh Rajesh Savla",
+      "email": "dakshsavla.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-58",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Devang Vaibhav Desai",
+      "email": "devangdesai.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-36",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Dhanshri Shinde",
+      "email": "dhanshri.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-11",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Dikshita Kshitij Patil",
+      "email": "dikshita.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-5",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "HPA2WJ",
+      "email": "kalpeshchoudhary.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-45",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Harman Singh Banwait",
+      "email": "harmanbanwait1.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-56",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Henil Ketan Nagda",
+      "email": "henilnagda.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/d302ea2b-3344-425c-9713-709a32685008",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "Get Started with Pub/Sub",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Cloud Storage",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Level 3: Generative AI",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Himanshu Jain",
+      "email": "jainhimanshu.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-64",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Jatin Khanijoan",
+      "email": "jatink.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-73",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Jena Nilanchal Sunilkumar",
+      "email": "nilanchal.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/4c89b3a7-4db0-45f9-b485-b5ec74d7d1b7",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "Get Started with Pub/Sub",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Cloud Storage",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        },
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-22 00:00:00-04:00",
+          "earned_date_raw": "Oct 22, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Jiya V Tibdewal",
+      "email": "jiyatibdewal.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-61",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Kashvi Sharma",
+      "email": "kashvisharma.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-34",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Kavish Jain",
+      "email": "jainkavish217.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-66",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Kiran Rajanikant Peke",
+      "email": "kiran2007.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-21",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Meeti Mayur Doshi",
+      "email": "meetidoshi.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/3da6b1b6-f73e-47b0-b2d8-eb944c091be6",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "Get Started with Looker",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with API Gateway",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Pub/Sub",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Cloud Storage",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        },
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-23 00:00:00-04:00",
+          "earned_date_raw": "Oct 23, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Mihir Vasudev Amin",
+      "email": "mihiramin.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-26",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Mohd Amaan Khan",
+      "email": "amaank.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-74",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Nakshi Goda",
+      "email": "nakshi.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-60",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Nandini Santosh Chandanshive",
+      "email": "nandinichandanshive.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-4",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Nazeline Francis Dsilva",
+      "email": "nazelinedsilva.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-39",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Neha Maity",
+      "email": "nehamaity.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-68",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Niket Ganesh bhoir",
+      "email": "bhoirniket18.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-28",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Nikhil Pushpendra Jain",
+      "email": "nikhiljain25.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-22",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Nishit Jain",
+      "email": "nishit05.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/b76aa169-2dd6-41a7-a5f7-dc76a92aad9d",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Niyaz Sheikh",
+      "email": "niyazsheikh.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-48",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Ojas Nilesh Amrujkar",
+      "email": "ojasamrujkar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-25",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Parnavi Makarand Patki",
+      "email": "parnavipatki.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-46",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Piyush Kiran Gandhi",
+      "email": "gandhipiyush.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-2",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Pooja Makarand Bongulwar",
+      "email": "poojabongulwar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-23",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Prajwal Suresh Poojary",
+      "email": "prajwalpoojary.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-57",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Prayush Rumit Nagda",
+      "email": "prayush.cloud11@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-20",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Prithvi Aravind Shetty",
+      "email": "prithvi09.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-71",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Priyanka Aradhey",
+      "email": "priyankaaradhey.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-49",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Pujit Shah",
+      "email": "pujit9.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-30",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Reva Umalkar",
+      "email": "revaumalkar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-14",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Ritesh Thakur",
+      "email": "ritesh7.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-69",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Ritik Sahu",
+      "email": "ritiks.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-42",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Rupali Biradar",
+      "email": "rupalibiradar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-24",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Sahana Murty",
+      "email": "sahanamurthy.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/f64cef6a-688d-47d2-8d4c-f93dae08b0df",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "Get Started with Pub/Sub",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "Get Started with Cloud Storage",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        },
+        {
+          "badge_name": "The Basics of Google Cloud Compute",
+          "earned_date": "2025-10-24 00:00:00-04:00",
+          "earned_date_raw": "Oct 24, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Saiswaroop Revankar",
+      "email": "saiswarooprevankar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-9",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Samarth Narayan Kangane",
+      "email": "samarth27.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-77",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Sarah Mathew",
+      "email": "sarahmathew.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-55",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Shagun Triveniprasad Pathak",
+      "email": "shagunp.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-31",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Shraddha Dattatray Phadke",
+      "email": "shraddha09.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-70",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Shravani Ajay Yeola",
+      "email": "shravaniyeola.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-47",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Shreya Yadkikar",
+      "email": "shreyayadkikar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-7",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Shubham Dattaprasad Pawar",
+      "email": "shubhampawar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/b1b2e3fd-2d1c-48b7-8385-82d0218de7ec",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [
+        {
+          "badge_name": "Level 3: Generative AI",
+          "earned_date": "2025-10-25 00:00:00-04:00",
+          "earned_date_raw": "Oct 25, 2025 EDT"
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Sibu Yadav",
+      "email": "Sibuyadav.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-50",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Swayam Rupesh Changede",
+      "email": "swayam28.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-13",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Tanvi Uday Patil",
+      "email": "tanvipatil.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-67",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Tejaswini Parag Ganatra",
+      "email": "tejaswiniganatra.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-32",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vaibhavi Jaya Naik",
+      "email": "vaibhavi12.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-52",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vaidehi Santosh Sanas",
+      "email": "vaidehisanas27.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-15",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vaishnavi Pramod Deshmukh",
+      "email": "vaishnavideshmukh.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-3",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vansh Jain",
+      "email": "vjgdg.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-59",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vedant Devendra Agrawal",
+      "email": "vedantagrawal.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-76",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vedant Jagannath Shinde",
+      "email": "vedant06.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-33",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vedant Vijayshankar Yadav",
+      "email": "vedanty.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-35",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Veera Bandekar",
+      "email": "veerabandekar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-43",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Vinayak Umesh Kundar",
+      "email": "vinayakkundar.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-27",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Yashvi Hitesh Rathod",
+      "email": "yashvi.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-18",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "avanish kavsh",
+      "email": "studyhardiit9@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-54",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "maulik Zambad",
+      "email": "maulikzambad.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-65",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "shivang varma",
+      "email": "shivangvarma.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-44",
+      "total_badges": 19,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "ATHARVA NARENDRA MANISHA KAVDE",
+      "email": "atharvak.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-78",
+      "total_badges": 18,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Anas Sayyed",
+      "email": "anassayyed.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-16",
+      "total_badges": 18,
+      "arcade_count": 2,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "Devshree Sachin Surve",
+      "email": "devshree.apsit.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-37",
+      "total_badges": 18,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    },
+    {
+      "name": "vedika gosavi",
+      "email": "vedikagosavi.cloud@gmail.com",
+      "profile_url": "https://www.cloudskillsboost.google/public_profiles/placeholder-75",
+      "total_badges": 16,
+      "arcade_count": 1,
+      "badges": [],
+      "error": null
+    }
+  ]
+}

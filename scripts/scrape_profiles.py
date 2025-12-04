@@ -1,0 +1,21 @@
+# Google Drive XLSX link (anyone with link can view)
+DRIVE_XLSX_LINK=https://docs.google.com/spreadsheets/d/1QNh_lZYLLx3ZajbAcb0yA4PMi-tARsNuC9HJV6EK2gc/edit?gid=1515128643#gid=1515128643
+
+
+# Supabase details (service role key - keep secret; used by GitHub Actions / server)
+SUPABASE_URL=https://xnaulieccfildxjlygwx.supabase.co
+SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhuYXVsaWVjY2ZpbGR4amx5Z3d4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTM5OTU4MSwiZXhwIjoyMDc2OTc1NTgxfQ.t_Sw3LRuh_ML5UP2jNrF5Gh32UcWF_TJHnljji5K6ro
+
+# Local data paths
+DATA_DIR=./data
+
+# Scraper settings
+REQUESTS_TIMEOUT=15
+SLEEP_SECONDS=2
+USE_PLAYWRIGHT_FALLBACK=true
+
+# Environment Variables
+VITE_SUPABASE_URL=https://xnaulieccfildxjlygwx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhuYXVsaWVjY2ZpbGR4amx5Z3d4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEzOTk1ODEsImV4cCI6MjA3Njk3NTU4MX0.3I-b70APygj-bgQT4oDpN2v8Yy73oYjKYtEn4D7IFMo
+
+VITE_SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhuYXVsaWVjY2ZpbGR4amx5Z3d4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTM5OTU4MSwiZXhwIjoyMDc2OTc1NTgxfQ.t_Sw3LRuh_ML5UP2jNrF5Gh32UcWF_TJHnljji5K6ro

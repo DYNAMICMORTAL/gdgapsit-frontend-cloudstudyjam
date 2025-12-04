@@ -1,0 +1,34 @@
+# Scraper Configuration
+scraper:
+  # Rate limiting
+  requests_timeout: 15
+  sleep_seconds: 2
+  use_playwright_fallback: true
+  
+  # Retry settings
+  max_retries: 3
+  retry_delay: 5
+  
+  # Batch processing
+  batch_size: 50
+
+# Data settings
+data:
+  output_dir: ./data
+  save_json: true
+  save_csv: true
+  keep_history: true
+  max_history_days: 30
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s [%(levelname)s] %(message)s"
+  log_to_file: true
+  log_dir: ./logs
+
+# Supabase settings
+supabase:
+  create_snapshots: true
+  update_ranks: true
+  track_runs: true
