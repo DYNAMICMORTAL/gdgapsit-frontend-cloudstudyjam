@@ -24,6 +24,19 @@ async function parseForm(req) {
 }
 
 export default async function handler(req, res) {
+	// Handle CORS preflight
+	if (req.method === 'OPTIONS') {
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+		res.setHeader('Access-Control-Allow-Headers', 'X-ADMIN-KEY, Content-Type');
+		return res.status(200).end();
+	}
+
+	// Set CORS headers for actual request
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+	res.setHeader('Access-Control-Allow-Headers', 'X-ADMIN-KEY, Content-Type');
+
 	if (req.method !== 'POST') {
 		return methodNotAllowed(res);
 	}

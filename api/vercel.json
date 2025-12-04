@@ -1,7 +1,50 @@
 {
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "vercel-nodejs@18.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "uploadCertificate.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "verify.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "certificate/*.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/uploadCertificate",
+      "dest": "/uploadCertificate.js"
+    },
+    {
+      "src": "/verify",
+      "dest": "/verify.js"
+    },
+    {
+      "src": "/certificate/(?<certId>[^/]+)",
+      "dest": "/certificate/[certId].js?certId=$certId"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-ADMIN-KEY, Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
 }

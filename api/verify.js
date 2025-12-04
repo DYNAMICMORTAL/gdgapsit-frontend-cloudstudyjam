@@ -2,6 +2,19 @@ import { getSupabaseServiceRole } from './_lib/supabaseClient.js';
 import { badRequest, methodNotAllowed, ok, serverError } from './_lib/response.js';
 
 export default async function handler(req, res) {
+	// Handle CORS preflight
+	if (req.method === 'OPTIONS') {
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+		res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+		return res.status(200).end();
+	}
+
+	// Set CORS headers for actual request
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+	res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 	if (req.method !== 'GET') {
 		return methodNotAllowed(res);
 	}

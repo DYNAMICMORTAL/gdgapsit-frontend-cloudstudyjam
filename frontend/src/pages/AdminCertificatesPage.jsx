@@ -157,20 +157,18 @@ export default function AdminCertificatesPage() {
 				const formData = new FormData();
 				formData.append('pdf', blob, `${certId}.pdf`);
 				formData.append('studentName', student.name);
-				formData.append('email', student.email);
-				formData.append('certId', certId);
-				formData.append('event', eventName);
-				formData.append('issuedAt', new Date(issueDate).toISOString());
+			formData.append('email', student.email);
+			formData.append('certId', certId);
+			formData.append('event', eventName);
+			formData.append('issuedAt', new Date(issueDate).toISOString());
 
-				const response = await fetch(`${backendUrl}/api/uploadCertificate`, {
-					method: 'POST',
-					headers: {
-						'X-ADMIN-KEY': adminKey
-					},
-					body: formData
-				});
-
-				if (!response.ok) {
+			const response = await fetch(`${backendUrl}/uploadCertificate`, {
+				method: 'POST',
+				headers: {
+					'X-ADMIN-KEY': adminKey
+				},
+				body: formData
+			});				if (!response.ok) {
 					const errorData = await response.json().catch(() => ({ message: 'Upload failed' }));
 					throw new Error(errorData.message || `HTTP ${response.status}`);
 				}
