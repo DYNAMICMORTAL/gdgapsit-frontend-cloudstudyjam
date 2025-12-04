@@ -1,0 +1,16 @@
+# Ignore these during Vercel deployment
+node_modules
+.git
+.env.local
+.env.*.local
+*.log
+.DS_Store
+frontend/node_modules
+frontend/dist
+frontend/.env.local
+scrapper
+scripts
+test
+data
+config/.env
+service-account.json

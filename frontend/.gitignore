@@ -4,7 +4,12 @@ dist
 dist-ssr
 *.local
 docs
+
+# Security - NEVER commit these
 service-account.json
+*.pem
+*.key
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
