@@ -1,0 +1,15 @@
+{
+  "name": "gdgapsit-backend-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API for certificate generation and Google Drive uploads",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "formidable": "^3.5.0",
+    "googleapis": "^166.0.0",
+    "nanoid": "^5.0.7"
+  }
+}
