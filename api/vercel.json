@@ -1,16 +1,8 @@
 {
   "functions": {
-    "uploadCertificate.js": {
+    "**/*.js": {
       "maxDuration": 60,
       "memory": 1024
-    },
-    "verify.js": {
-      "maxDuration": 30,
-      "memory": 512
-    },
-    "certificate/*.js": {
-      "maxDuration": 30,
-      "memory": 512
     }
   },
   "headers": [
