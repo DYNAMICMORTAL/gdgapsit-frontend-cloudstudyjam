@@ -140,11 +140,18 @@ export default function AdminCertificatesPage() {
 				// Force a small delay to let React render
 				await new Promise((resolve) => setTimeout(resolve, 100));
 
-				// Capture PDF
+				// Capture PDF with optimized settings
 				const { blob } = await generateCertificatePdf({
 					elementId: 'certificate',
-					scale: 2
+					scale: 1.5 // Reduced from 2 to lower file size (still good quality)
 				});
+
+				// Check file size
+				const sizeKB = blob.size / 1024;
+				console.log(`📄 Generated PDF: ${sizeKB.toFixed(2)} KB`);
+				if (sizeKB > 4000) {
+					console.warn(`⚠️  PDF is large (${sizeKB.toFixed(2)} KB). May need further optimization.`);
+				}
 
 				// Upload to backend
 				const formData = new FormData();
