@@ -12,8 +12,8 @@ export default function Layout({ children }) {
     { name: 'Home', path: '/', icon: Home },
     { name: 'Leaderboard', path: '/leaderboard', icon: Trophy },
     { name: 'Announcements', path: '/announcements', icon: Bell },
-    { name: 'Students', path: '/admin/students', icon: Users },
-    { name: 'Certificates', path: '/admin/certificates', icon: Award }
+    // { name: 'Students', path: '/admin/students', icon: Users },
+    // { name: 'Certificates', path: '/admin/certificates', icon: Award }
   ];
 
   return (

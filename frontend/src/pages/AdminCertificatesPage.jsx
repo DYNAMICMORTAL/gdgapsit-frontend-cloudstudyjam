@@ -17,6 +17,9 @@ import {
 	Users
 } from 'lucide-react';
 
+const waitForNextFrame = () =>
+	new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
 const STATUS_COLORS = {
 	success: 'text-emerald-600',
 	error: 'text-red-600',
@@ -35,6 +38,8 @@ export default function AdminCertificatesPage() {
 	const [certPrefix, setCertPrefix] = useState('APSIT-CSJ-25');
 	const [generationStatus, setGenerationStatus] = useState({ state: 'idle', processed: 0, total: 0, message: '' });
 	const [previewQr, setPreviewQr] = useState('');
+	const [previewStudent, setPreviewStudent] = useState(null);
+	const [previewCertId, setPreviewCertId] = useState('');
 	const [previewDownloading, setPreviewDownloading] = useState(false);
 
 	useEffect(() => {
@@ -43,13 +48,22 @@ export default function AdminCertificatesPage() {
 	}, []);
 
 	useEffect(() => {
-		const firstSelected = students.find((student) => student.id === selectedIds[0]);
-		const sampleCertId = `${certPrefix}-${generateSuffix(firstSelected?.id || 'XXXX')}`;
+		if (!selectedStudents.length) {
+			setPreviewStudent(null);
+			setPreviewCertId('');
+			setPreviewQr('');
+			return;
+		}
+
+		const firstSelected = selectedStudents[0];
+		const sampleCertId = `${certPrefix}-${generateSuffix(firstSelected.id || 'XXXX')}`;
+		setPreviewStudent(firstSelected);
+		setPreviewCertId(sampleCertId);
 		const previewUrl = `${window.location.origin}/certificate/${sampleCertId}`;
 		QRCode.toDataURL(previewUrl)
 			.then(setPreviewQr)
 			.catch(() => setPreviewQr(''));
-	}, [selectedIds, students, certPrefix]);
+	}, [selectedStudents, certPrefix]);
 
 	const loadStudents = async () => {
 		try {
@@ -130,6 +144,10 @@ export default function AdminCertificatesPage() {
 			try {
 				// Generate QR for this student
 				const qrDataUrl = await QRCode.toDataURL(verifyUrl);
+				setPreviewStudent(student);
+				setPreviewCertId(certId);
+				setPreviewQr(qrDataUrl);
+				await waitForNextFrame();
 
 				// Temporarily render certificate in DOM (hidden preview element)
 				const previewEl = document.getElementById('certificate');
@@ -202,7 +220,7 @@ export default function AdminCertificatesPage() {
 	};
 
 	const handlePreviewDownload = async () => {
-		if (!selectedStudents.length) {
+		if (!previewStudent) {
 			setGenerationStatus({ state: 'error', processed: 0, total: 0, message: 'Select a student to preview.' });
 			return;
 		}
@@ -213,7 +231,7 @@ export default function AdminCertificatesPage() {
 				elementId: 'certificate',
 				scale: 2
 			});
-			const fileName = `${certPrefix}-${generateSuffix(selectedStudents[0].id)}_PREVIEW.pdf`;
+			const fileName = `${previewCertId || certPrefix}-PREVIEW.pdf`;
 			pdf.save(fileName);
 		} catch (error) {
 			console.error('Unable to download preview PDF', error);
@@ -336,15 +354,15 @@ export default function AdminCertificatesPage() {
 
 					<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
 						<h2 className="text-lg font-semibold text-gray-900 mb-4">Certificate preview</h2>
-						{selectedStudents.length === 0 ? (
+						{!previewStudent ? (
 							<div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center text-gray-500">
 								Select a participant to preview their certificate
 							</div>
 						) : (
 							<>
 								<CertificatePreview
-									studentName={selectedStudents[0].name}
-									certId={`${certPrefix}-${generateSuffix(selectedStudents[0].id)}`}
+									studentName={previewStudent.name}
+									certId={previewCertId}
 									eventTitle={eventName}
 									issuedOn={issueDate}
 									qrCodeDataUrl={previewQr}
